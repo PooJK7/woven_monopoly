@@ -2,6 +2,7 @@ from game.utils import load_json
 
 
 class Space:
+    """Represents a single space on the board"""
     def __init__(self, data):
         self.name = data["name"]
         self.type = data["type"]
@@ -11,13 +12,15 @@ class Space:
 
 
 class Property(Space):
+    """A purchasable space on the board"""
     def __init__(self, data):
         super().__init__(data)
         self.price = data["price"]
         self.colour = data["colour"]
-        self.owner = None
+        self.owner = None 
 
     def rent(self, all_owned_by_same):
+        """Return doubled rent if the owner holds all properties of the same colour"""
         if all_owned_by_same:
             return self.price * 2
         return self.price
@@ -27,10 +30,12 @@ class Property(Space):
 
 
 class Board:
+    """Represents the board and the spaces on it"""
     def __init__(self, path="board.json"):
         self.spaces = self._load(path)
 
     def _load(self, path):
+        """Parse board data and return a list of Space and Property objects"""
         data = load_json(path)
         spaces = []
         for item in data:
