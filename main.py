@@ -3,6 +3,7 @@ from game.game import Game
 
 
 def main():
+    """Entry point for the Monopoly simulator."""
     if len(sys.argv) != 2:
         print("Usage: python main.py <rolls_file>")
         print("Example: python main.py rolls_1.json")
