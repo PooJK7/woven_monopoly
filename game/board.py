@@ -1,4 +1,4 @@
-import json
+from game.utils import load_json
 
 
 class Space:
@@ -17,6 +17,11 @@ class Property(Space):
         self.colour = data["colour"]
         self.owner = None
 
+    def rent(self, all_owned_by_same):
+        if all_owned_by_same:
+            return self.price * 2
+        return self.price
+
     def __repr__(self):
         return f"Property({self.name}, ${self.price}, {self.colour})"
 
@@ -26,9 +31,7 @@ class Board:
         self.spaces = self._load(path)
 
     def _load(self, path):
-        with open(path) as f:
-            data = json.load(f)
-
+        data = load_json(path)
         spaces = []
         for item in data:
             if item["type"] == "property":
