@@ -1,6 +1,6 @@
 # Woven Monopoly
 
-A command line application that simulates deterministic games of Woven Monopoly using predefined dice rolls.
+A command-line application using Python that simulates deterministic games of Woven Monopoly using predefined dice rolls.
 
 ## Requirements
 
@@ -40,10 +40,10 @@ python -m pytest tests/
 
 ## Design Decisions
 
-- **Separation of concerns** — Board, Player and Game logic are split into separate classes
-- **Extensibility** — new space types can be added by extending the Space class in board.py
-- **Utility module** — JSON loading is handled in utils.py so it is not tied to any specific class
-- **Deterministic simulation** — given the same dice rolls file, the game will always produce the same result
+- **Separation of concerns** - Board, Player and Game logic are split into separate classes
+- **Extensibility** - new space types can be added by extending the Space class in board.py
+- **Utility module** - JSON loading is handled in utils.py so it is not tied to any specific class
+- **Deterministic simulation** - given the same dice rolls, the game will always produce the same result
 
 ## Project Structure
 
